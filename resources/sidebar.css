@@ -1,0 +1,59 @@
+.ext-customnamespace-sidebar {
+    background: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+    padding: 0.5em;
+    margin-bottom: 1em;
+}
+
+.webleftbar-content {
+    font-size: 0.875em;
+}
+
+.webleftbar-section {
+    margin-bottom: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.webleftbar-heading {
+    background: #eaecf0;
+    padding: 0.5em;
+    margin: 0;
+    cursor: pointer;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    user-select: none;
+}
+
+.webleftbar-heading:hover {
+    background: #e1e5e9;
+}
+
+.webleftbar-list {
+    margin: 0;
+    padding: 0.5em;
+    list-style: none;
+}
+
+.webleftbar-list li {
+    padding: 0.2em 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.webleftbar-list li:last-child {
+    border-bottom: none;
+}
+
+.webleftbar-list a {
+    color: #0645ad;
+    text-decoration: none;
+}
+
+.webleftbar-list a:hover {
+    text-decoration: underline;
+}
+
+.webleftbar-list a:visited {
+    color: #0b0080;
+}

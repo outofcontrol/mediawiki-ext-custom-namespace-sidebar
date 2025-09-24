@@ -1,0 +1,27 @@
+{
+	"name": "CustomNameSpaceSidebar",
+	"private": true,
+	"scripts": {
+		"test": "grunt test"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3.3.1",
+		"@eslint/js": "^9.35.0",
+		"eslint": "^8.57.1",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-config-wikimedia": "0.31.0",
+		"grunt": "1.6.1",
+		"grunt-banana-checker": "0.13.0",
+		"grunt-eslint": "24.3.0",
+		"grunt-stylelint": "0.20.1",
+		"prettier": "^3.6.2",
+		"stylelint": "^16.24.0",
+		"stylelint-config-wikimedia": "^0.18.0"
+	},
+	"eslintIgnore": [
+		"vendor/**"
+	],
+	"browserslist": [
+		"defaults"
+	]
+}

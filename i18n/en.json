@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"outofcontrol"
+		]
+	},
+	"customnamespacesidebar-desc": "Adds the ability to automatically add a custom menu to a NameSpace which has a page called NameSpaceSidebar"
+}
