@@ -7,6 +7,7 @@
 	"descriptionmsg": "Adds the ability to automatically add a custom menu to a NameSpace which has a page called NameSpaceSidebar",
 	"license-name": "MIT",
 	"type": "other",
+	"version": "1.0.1",
 	"requires": {
 		"MediaWiki": ">= 1.42.0"
 	},
@@ -25,12 +26,10 @@
 		"ext.customnamespace.sidebar": {
 			"localBasePath": "resources",
 			"remoteExtPath": "CustomNameSpaceSidebar/resources",
-			"styles":
-			[
+			"styles": [
 				"sidebar.css"
 			],
-			"targets":
-			[
+			"targets": [
 				"desktop",
 				"mobile"
 			]
