@@ -1,9 +1,6 @@
 .ext-customnamespace-sidebar {
-    background: #f8f9fa;
-    border: 1px solid #a2a9b1;
     border-radius: 2px;
-    padding: 0.5em;
-    margin-bottom: 1em;
+    margin: 1em 0;
 }
 
 .webleftbar-content {
@@ -45,15 +42,24 @@
     border-bottom: none;
 }
 
-.webleftbar-list a {
-    color: #0645ad;
-    text-decoration: none;
+@media (prefers-color-scheme: dark) {
+
+.webleftbar-heading {
+    background-color: var(--background-color-base,#fff);
+}
+.webleftbar-heading:hover {
+    background: #222;
 }
 
-.webleftbar-list a:hover {
-    text-decoration: underline;
+.webleftbar-section {
+border: 1px solid #666;
 }
 
-.webleftbar-list a:visited {
-    color: #0b0080;
+.webleftbar-list li,
+.webleftbar-heading {
+    border-bottom: 1px solid color-mix(in srgb, var(--border-color-base) 10%,#323941);
+
 }
+
+}
+

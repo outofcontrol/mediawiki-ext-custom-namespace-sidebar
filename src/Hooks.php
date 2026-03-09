@@ -134,7 +134,9 @@ class Hooks implements \MediaWiki\Hook\BeforePageDisplayHook
                 }
                 $currentSection = trim($matches[1]);
             } elseif (preg_match('/^\*\s*(.+)$/', $line, $matches)) {
-                $listItem = $this->parseWikiLink($matches[1]);
+		    $listItem = $this->parseWikiLink($matches[1]);
+		    $listItem = $this->parseExternalLink($listItem);
+
                 $currentList[] = $listItem;
             }
         }
@@ -164,7 +166,7 @@ class Hooks implements \MediaWiki\Hook\BeforePageDisplayHook
         $listItems = '<li>' . implode('</li><li>', $items) . '</li>';
 
         $template = <<<'HTML'
-<details class="webleftbar-section">
+<details class="webleftbar-section" open>
   <summary class="webleftbar-heading">%s</summary>
   <ul class="webleftbar-list">
     %s
@@ -197,4 +199,14 @@ HTML;
             return htmlspecialchars($display);
         }, $text);
     }
+
+    private function parseExternalLink(string $text): string
+{
+    $pattern = '/\[([a-z][a-z0-9+.\-]*:\/\/[^\s\]]+)\s+([^\]]+)\]/';
+    return preg_replace_callback($pattern, function ($matches) {
+        $url = $matches[1];
+        $display = $matches[2];
+        return '<a href="' . htmlspecialchars($url) . '" target="_blank" rel="noopener">' . htmlspecialchars($display) . '</a>';
+    }, $text);
+}
 }

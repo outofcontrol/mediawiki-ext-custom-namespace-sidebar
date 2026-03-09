@@ -9,9 +9,14 @@ $( () => {
 			} else {
 				sidebarContent.prepend( customSidebar );
 			}
-			customSidebar.show();
-		} else {
-			customSidebar.show();
 		}
+		customSidebar.show();
 	}
+	document.querySelectorAll(
+		'a[href*="Special:Preferences"][href*="useskin="], a[href*="useskinversion="]'
+	).forEach( ( a ) => {
+		const c = a.closest( 'li,div' ) || a;
+		c.remove();
+	} );
 } );
+
