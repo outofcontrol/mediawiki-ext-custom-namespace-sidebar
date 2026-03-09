@@ -1,50 +1,33 @@
 {
 	"name": "CustomNameSpaceSidebar",
-	"author":
-	[
+	"author": [
 		"outofcontrol"
 	],
 	"url": "https://github.com/outofcontrol/mediawiki-extension-CustomNameSpaceSidebar",
 	"descriptionmsg": "Adds the ability to automatically add a custom menu to a NameSpace which has a page called NameSpaceSidebar",
-	"license-name": "Apache 2.0",
+	"license-name": "MIT",
 	"type": "other",
-	"requires":
-	{
+	"requires": {
 		"MediaWiki": ">= 1.42.0"
 	},
-	"AutoloadNamespaces":
-	{
+	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\CustomNameSpaceSidebar\\": "src/"
 	},
-	"HookHandlers":
-	{
-		"CustomNameSpaceSidebarHooks":
-		{
+	"HookHandlers": {
+		"CustomNameSpaceSidebarHooks": {
 			"class": "MediaWiki\\Extension\\CustomNameSpaceSidebar\\Hooks"
 		}
 	},
-	"Hooks":
-	{
-		"BeforePageDisplay": "CustomNameSpaceSidebarHooks"
+	"Hooks": {
+		"SkinAfterPortlet": "CustomNameSpaceSidebarHooks"
 	},
-	"ResourceModules":
-	{
-		"ext.customnamespace.sidebar":
-		{
+	"ResourceModules": {
+		"ext.customnamespace.sidebar": {
 			"localBasePath": "resources",
 			"remoteExtPath": "CustomNameSpaceSidebar/resources",
-			"packageFiles":
-			[
-				"sidebar.js"
-			],
 			"styles":
 			[
 				"sidebar.css"
-			],
-			"dependencies":
-			[
-				"mediawiki.util",
-				"jquery"
 			],
 			"targets":
 			[
@@ -53,10 +36,8 @@
 			]
 		}
 	},
-	"MessagesDirs":
-	{
-		"CustomNameSpaceSidebar":
-		[
+	"MessagesDirs": {
+		"CustomNameSpaceSidebar": [
 			"i18n"
 		]
 	},
