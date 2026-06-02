@@ -46,7 +46,7 @@ class Hooks
         $sidebarContent = $this->loadWebLeftBarContent( $webLeftBarTitle );
 
         if ( $sidebarContent ) {
-            $skin->getOutput()->addModules( 'ext.customnamespace.sidebar' );
+            $skin->getOutput()->addModuleStyles( 'ext.customnamespace.sidebar' );
 
             $html .= '<div id="MenuSidebar" class="ext-customnamespace-sidebar">' . $sidebarContent . '</div>';
         }

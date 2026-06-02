@@ -1,9 +1,12 @@
 
-/* Remove default browser summary triangle */
 .webleftbar-heading::-webkit-details-marker,
 .webleftbar-heading::marker {
     display: none;
     content: '';
+}
+
+#p-custommenu > .vector-menu-heading {
+    display: none !important;
 }
 
 .webleftbar-heading {
@@ -20,7 +23,6 @@
     -webkit-appearance: none;
 }
 
-/* Chevron indicator */
 .webleftbar-heading::before {
     content: '';
     display: inline-block;
