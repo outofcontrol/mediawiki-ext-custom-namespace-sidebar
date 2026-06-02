@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Standalone PHPUnit configuration for running the extension's unit tests
+  without a MediaWiki core checkout. In Wikimedia CI the tests are run through
+  MediaWiki core's own PHPUnit entry point instead, which discovers them under
+  tests/phpunit/unit and tests/phpunit/integration automatically.
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         bootstrap="tests/bootstrap.php"
+         colors="true"
+         beStrictAboutOutputDuringTests="true"
+         failOnWarning="true"
+         cacheResult="false">
+    <testsuites>
+        <testsuite name="unit">
+            <directory>tests/phpunit/unit</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </source>
+</phpunit>

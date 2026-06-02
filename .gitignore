@@ -3,3 +3,6 @@
 /node_modules
 .eslintcache
 /.stylelintcache
+/.phpunit.cache
+/.phpunit.result.cache
+/phpunit.xml

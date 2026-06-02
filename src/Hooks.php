@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\CustomNameSpaceSidebar;
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\NamespaceInfo;
-use MediaWiki\Title\Title;
 
 class Hooks
 {
@@ -100,9 +99,7 @@ class Hooks
 
         $wikitext = $content->getText();
 
-        $parsed = $this->parseWebLeftBarContent($wikitext);
-
-        return $parsed;
+        return $this->makeParser()->parse($wikitext);
     }
 
     private function getTitle(string $pageTitle)
@@ -114,105 +111,15 @@ class Hooks
     }
 
     /**
-     * Parse wikitext content and convert to collapsible HTML
-     * @param string $wikitext
-     * @return string
+     * Build a parser whose internal link resolution is backed by MediaWiki.
+     * @return WebLeftBarParser
      */
-    private function parseWebLeftBarContent(string $wikitext): string
+    private function makeParser(): WebLeftBarParser
     {
-        $lines = explode("\n", trim($wikitext));
-        $html = '<div class="webleftbar-content">';
-        $currentSection = null;
-        $currentList = [];
+        return new WebLeftBarParser(function (string $page): ?string {
+            [, $title] = $this->getTitle($page);
 
-
-        foreach ($lines as $lineNum => $line) {
-            $line = trim($line);
-
-            if (empty($line)) {
-                continue;
-            }
-
-            if (preg_match('/^\*\*(.+)\*\*$/', $line, $matches)) {
-                if ($currentSection !== null) {
-                    $html .= $this->buildCollapsibleSection($currentSection, $currentList);
-                    $currentList = [];
-                }
-                $currentSection = trim($matches[1]);
-            } elseif (preg_match('/^\*\s*(.+)$/', $line, $matches)) {
-            $listItem = $this->parseWikiLink($matches[1]);
-            $listItem = $this->parseExternalLink($listItem);
-
-                $currentList[] = $listItem;
-            }
-        }
-
-        if ($currentSection !== null) {
-            $html .= $this->buildCollapsibleSection($currentSection, $currentList);
-        }
-
-        $html .= '</div>';
-        return $html;
+            return $title ? $title->getLocalURL() : null;
+        });
     }
-
-    /**
-     * Build a collapsible section with details/summary
-     * @param string $heading
-     * @param array $items
-     * @return string
-     */
-    private function buildCollapsibleSection(string $heading, array $items): string
-    {
-        if (empty($items)) {
-            return '';
-        }
-
-        $escapedHeading = htmlspecialchars($heading, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8', false);
-
-        $listItems = '<li>' . implode('</li><li>', $items) . '</li>';
-
-        $template = <<<'HTML'
-<details class="webleftbar-section" open>
-  <summary class="webleftbar-heading">%s</summary>
-  <ul class="webleftbar-list">
-    %s
-  </ul>
-</details>
-HTML;
-
-        return sprintf($template, $escapedHeading, $listItems);
-    }
-
-    /**
-     * Parse wiki links and convert to HTML
-     * @param string $text
-     * @return string
-     */
-    private function parseWikiLink(string $text): string
-    {
-        $pattern = '/\[\[([^|\]]+)(?:\|([^\]]+))?\]\]/';
-        return preg_replace_callback($pattern, function ($matches) {
-            $page = $matches[1];
-            $display = isset($matches[2]) ? $matches[2] : $page;
-
-            [$services, $title] = $this->getTitle($page);
-
-            if ($title) {
-                $url = $title->getLocalURL();
-                return '<a href="' . htmlspecialchars($url) . '">' . htmlspecialchars($display) . '</a>';
-            }
-
-            return htmlspecialchars($display);
-        }, $text);
-    }
-
-    private function parseExternalLink(string $text): string
-{
-    $pattern = '/\[([a-z][a-z0-9+.\-]*:\/\/[^\s\]]+)\s+([^\]]+)\]/';
-    return preg_replace_callback($pattern, function ($matches) {
-        $url = $matches[1];
-        $display = $matches[2];
-        return '<a href="' . htmlspecialchars($url) . '" target="_blank" rel="noopener">' . htmlspecialchars($display) . '</a>';
-    }, $text);
-}
 }

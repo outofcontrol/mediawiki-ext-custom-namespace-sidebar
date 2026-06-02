@@ -42,6 +42,23 @@ Sections are defined with `**Section Title**` and list items with `* `. Both int
 
 Each section renders as a collapsible block in the sidebar.
 
+List items that appear before the first section heading are rendered as a leading block without a heading, in their original position.
+
+## Testing
+
+The wikitext parsing logic lives in `WebLeftBarParser`, which has no MediaWiki dependencies, so its unit tests run standalone (no MediaWiki core checkout required).
+
+```bash
+composer install
+composer phpunit
+```
+
+`composer test` runs the linters, the unit tests, PHP CodeSniffer, and minus-x together.
+
+In Wikimedia CI the same tests are discovered through MediaWiki core's PHPUnit entry point under `tests/phpunit/unit`. The test case extends `MediaWikiUnitTestCase` when that base class is available and falls back to plain PHPUnit otherwise.
+
+The MediaWiki coupled parts (`Hooks`, title resolution, page loading) are intended for integration tests under `tests/phpunit/integration`, which require a MediaWiki core checkout to run.
+
 ## License
 
 MIT
