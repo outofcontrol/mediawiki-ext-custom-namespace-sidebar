@@ -66,4 +66,4 @@ The MediaWiki coupled parts (`Hooks`, title resolution, page loading) are intend
 
 ## License
 
-MIT
+This repository is licensed Apache-2.0 inbound. Licenses used in this repository include Apache-2.0, CC-BY-4.0 for Markdown files, and Cc-BY-SA-4.0 for The CODE_OF_CONDUCT.md. 
