@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2026 Out of Control, Inc.
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # CustomNameSpaceSidebar
 
 A MediaWiki extension that automatically adds a custom sidebar menu to any namespace by reading a designated wiki page.

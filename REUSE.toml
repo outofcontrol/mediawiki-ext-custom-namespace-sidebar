@@ -1,0 +1,13 @@
+version = 1
+
+[[annotations]]
+path = [
+  ".gitignore",
+  "**.json",
+  ".phan/config.php",
+  ".phpcs.xml",
+  "phpunit.xml.dist",
+  "resources/**",
+]
+SPDX-FileCopyrightText = "2026 Standard C++ Foundation"
+SPDX-License-Identifier = "Apache-2.0"

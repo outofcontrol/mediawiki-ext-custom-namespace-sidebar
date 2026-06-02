@@ -1,4 +1,6 @@
 <?php
+// SPDX-FileCopyrightText: 2026 Out of Control, Inc.
+// SPDX-License-Identifier: Apache-2.0
 
 /**
  * Standalone PHPUnit bootstrap for the CustomNameSpaceSidebar unit tests.

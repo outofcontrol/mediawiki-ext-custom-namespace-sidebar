@@ -1,5 +1,8 @@
 <?php
 
+// SPDX-FileCopyrightText: 2026 Out of Control, Inc.
+// SPDX-License-Identifier: Apache-2.0
+
 namespace MediaWiki\Extension\CustomNameSpaceSidebar;
 
 use MediaWiki\MediaWikiServices;
